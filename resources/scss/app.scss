@@ -1,0 +1,26 @@
+@import 'bootstrap/scss/bootstrap';
+
+@import 'variables';
+@import 'typography';
+@import 'buttons';
+@import 'cards';
+@import 'forms';
+@import 'sketch';
+
+// Global
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: $font-body;
+    color: $color-text;
+    background-color: $color-background;
+}
+
+// Header
+
+
+// Footer
