@@ -1,16 +1,21 @@
-$color-primary: #ff5e5b; // Vibrant coral
-$color-secondary: #ffaa5e; // Warm orange
-$color-accent: #8ac926; // Bright green
-$color-info: #1982c4; // Sky blue
-$color-background: #fefefe; // Off white
-$color-surface: #ffffff;
-$color-border: #e0e0e0;
-$color-text: #2c2c2c;
-$color-muted: #777777;
+$color-bg-primary: #0A0A0A;
+$color-bg-secondary: #1A1A1A;
+$color-accent-cyan: #00F0FF;
+$color-accent-pink: #FF007A;
+$color-accent-green: #9BFF00;
+$color-text-primary: #FFFFFF;
+$color-text-dark: #000000;
+$color-text-secondary: #B3B3B3;
 
-// Additional playful shades
-$color-purple: #9b5de5;
-$color-pink: #f15bb5;
+$accent-cyan: #00f0ff;
+$accent-pink: #ff007a;
+$accent-green: #9bff00;
+$accent-amber: #ffb300;
+
+// Borders
+$border-color: #000;
+$border-height: 2px;
+$border-height-sm: 1.5px;
 
 // Spacing Scale
 $space-xxs: 2px;

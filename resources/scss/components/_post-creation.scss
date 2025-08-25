@@ -1,0 +1,93 @@
+.post-creation-container{
+    background: white;
+    border: $border-height-sm solid $border-color;
+    border-radius: $border-radius;
+
+    .form-group{
+
+        textarea{
+            width: 100%;
+            border-radius: $border-radius;
+            padding: $space-sm;
+            font-size: 1rem;
+
+            &:focus{
+                outline: none;
+            }
+        }
+
+        .user-hold{
+            display: flex;
+
+            .user-avatar{
+
+                img{
+                    border-radius: 50%;
+                    width: 48px;
+                    height: 48px;
+                }
+            }
+
+            .user-name{
+
+                h3{
+
+                }
+
+                .privacy-dropdown{
+
+                    select{
+                        border-radius: $border-radius;
+                        padding: $space-sm;
+                        font-size: 1rem;
+
+                        &:focus{
+                            outline: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .form-interactive{
+        padding: $space-sm;
+
+         .form-left-attachments{
+
+            ul{
+                padding: 0px;
+                margin: 0px;
+
+                display: flex;
+
+                li{
+                    list-style-type: none;
+
+                    label{
+
+                        i{
+                            font-size: 1.25rem;
+                        }
+
+                        input[type=file]{
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    button{
+        color: white;
+        border: none;
+        border-radius: $border-radius;
+        padding: $space-sm $space-md;
+        cursor: pointer;
+
+        &:hover{
+
+        }
+    }
+}

@@ -8,19 +8,27 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * For you page
      */
-    public function index()
+    public function for_you()
     {
-        //
+        return view('pages.dashboard.for-you');
     }
 
     /**
-     * Feed page
+     * Following page
      */
-    public function feed()
+    public function following()
     {
-        return view('pages.dashboard.feed');
+        return view('pages.dashboard.following');
+    }
+
+    /**
+     * Popular page
+     */
+    public function popular()
+    {
+        return view('pages.dashboard.popular');
     }
 
     /**

@@ -1,0 +1,50 @@
+.page-dashboard{
+    padding-top: 10px;
+
+    .page-inner{
+        
+        .page-row{
+
+            .page-row-column{
+
+            }
+
+            .page-row-column.sidebar,
+            .page-row-column.interactive{
+                padding: 0px;
+            }
+
+            .page-row-column.main{
+                padding: 0px;
+                flex-grow: 2;
+            }
+        }
+    }
+}
+
+// Feed Navigation
+.feed-navigation-container{
+
+    .feed-navigation-inner{
+
+        ul{
+            padding: 0px;
+            margin: 0px;
+
+            li{
+                display: inline-block;
+
+                a{
+                    
+                }
+
+                &.active{
+
+                    a{
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}
