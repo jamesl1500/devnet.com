@@ -6,6 +6,8 @@ use App\Models\Comments;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCommentsRequest;
 use App\Http\Requests\UpdateCommentsRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentsController extends Controller
 {
@@ -14,7 +16,12 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        //
+        $comments = Comments::with(['user', 'parent'])
+            ->whereNull('parent_id')
+            ->latest()
+            ->paginate(20);
+
+        return view('comments.index', compact('comments'));
     }
 
     /**
@@ -22,7 +29,7 @@ class CommentsController extends Controller
      */
     public function create()
     {
-        //
+        return view('comments.create');
     }
 
     /**
@@ -30,7 +37,16 @@ class CommentsController extends Controller
      */
     public function store(StoreCommentsRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $validated['user_id'] = Auth::id();
+        
+        $comment = Comments::create($validated);
+        
+        return response()->json([
+            'status' => 'success',
+            'comment' => $comment->load('user'),
+            'message' => 'Comment posted successfully!'
+        ]);
     }
 
     /**
@@ -38,7 +54,9 @@ class CommentsController extends Controller
      */
     public function show(Comments $comments)
     {
-        //
+        $comments->load(['user', 'parent', 'children.user']);
+        
+        return view('comments.show', compact('comments'));
     }
 
     /**
@@ -46,7 +64,9 @@ class CommentsController extends Controller
      */
     public function edit(Comments $comments)
     {
-        //
+        $this->authorize('update', $comments);
+        
+        return view('comments.edit', compact('comments'));
     }
 
     /**
@@ -54,7 +74,17 @@ class CommentsController extends Controller
      */
     public function update(UpdateCommentsRequest $request, Comments $comments)
     {
-        //
+        $this->authorize('update', $comments);
+        
+        $validated = $request->validated();
+        
+        $comments->update($validated);
+        
+        return response()->json([
+            'status' => 'success',
+            'comment' => $comments->load('user'),
+            'message' => 'Comment updated successfully!'
+        ]);
     }
 
     /**
@@ -62,6 +92,13 @@ class CommentsController extends Controller
      */
     public function destroy(Comments $comments)
     {
-        //
+        $this->authorize('delete', $comments);
+        
+        $comments->delete();
+        
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Comment deleted successfully!'
+        ]);
     }
 }

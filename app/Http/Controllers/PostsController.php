@@ -6,6 +6,9 @@ use App\Models\Posts;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostsRequest;
 use App\Http\Requests\UpdatePostsRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class PostsController extends Controller
 {
@@ -14,7 +17,13 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Posts::with(['user', 'group', 'cover'])
+            ->where('status', 'published')
+            ->where('visibility', 'public')
+            ->latest()
+            ->paginate(20);
+
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -22,7 +31,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -30,7 +39,14 @@ class PostsController extends Controller
      */
     public function store(StorePostsRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $validated['user_id'] = Auth::id();
+        $validated['slug'] = Str::slug($validated['title']);
+        
+        $post = Posts::create($validated);
+        
+        return redirect()->route('posts.show', $post)
+            ->with('success', 'Post created successfully!');
     }
 
     /**
@@ -38,7 +54,9 @@ class PostsController extends Controller
      */
     public function show(Posts $posts)
     {
-        //
+        $posts->load(['user', 'group', 'cover', 'comments.user']);
+        
+        return view('posts.show', compact('posts'));
     }
 
     /**
@@ -46,7 +64,9 @@ class PostsController extends Controller
      */
     public function edit(Posts $posts)
     {
-        //
+        $this->authorize('update', $posts);
+        
+        return view('posts.edit', compact('posts'));
     }
 
     /**
@@ -54,7 +74,15 @@ class PostsController extends Controller
      */
     public function update(UpdatePostsRequest $request, Posts $posts)
     {
-        //
+        $this->authorize('update', $posts);
+        
+        $validated = $request->validated();
+        $validated['slug'] = Str::slug($validated['title']);
+        
+        $posts->update($validated);
+        
+        return redirect()->route('posts.show', $posts)
+            ->with('success', 'Post updated successfully!');
     }
 
     /**
@@ -62,6 +90,11 @@ class PostsController extends Controller
      */
     public function destroy(Posts $posts)
     {
-        //
+        $this->authorize('delete', $posts);
+        
+        $posts->delete();
+        
+        return redirect()->route('posts.index')
+            ->with('success', 'Post deleted successfully!');
     }
 }
