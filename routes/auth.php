@@ -3,7 +3,7 @@
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
-use Livewire\Volt\Volt;
+use Laravel\Socialite\Facades\Socialite;
 
 Route::middleware('guest')->group(function () {
     Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -23,6 +23,12 @@ Route::middleware('guest')->group(function () {
     Route::post('reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
 
 });
+
+/**
+ * Github login routes
+ */
+Route::get('/auth/redirect', [AuthController::class, 'initiateGithubLogin'])->name('login.github');
+Route::get('/auth/callback', [AuthController::class, 'handleGithubCallback'])->name('login.github.callback');
 
 /**
  * Auth protected routes:

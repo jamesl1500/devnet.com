@@ -32,7 +32,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'bio',
         'location',
         'website',
-        'settings'
+        'settings',
+        'provider_id',
+        'token',
+        'refresh_token',
+        'expires_in'
     ];
 
     /**

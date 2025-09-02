@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('username')->unique()->default('');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->string('role')->default('user');
             $table->foreignId('avatar_id')->constrained('files');
             $table->foreignId('cover_id')->constrained('files');
@@ -28,6 +28,10 @@ return new class extends Migration
             $table->json('settings')->nullable();
             $table->boolean('is_onboarding')->default(true);
             $table->string('onboarding_step')->default('welcome');
+            $table->string('provider_id')->nullable();
+            $table->text('token')->nullable();
+            $table->text('refresh_token')->nullable();
+            $table->integer('expires_in')->nullable();
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamp('last_active_at')->nullable();

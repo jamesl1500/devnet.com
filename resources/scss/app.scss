@@ -253,7 +253,7 @@ a:hover {
 
 // Website
 .website-container{
-    margin-top: 150px;
+    
 }
 
 // Post Creation
@@ -261,6 +261,9 @@ a:hover {
 
 // Heros
 @import 'components/heros';
+
+// Auth pages (Login, register, Verify Email, Forgot password)
+@import 'pages/auth';
 
 // Dashboard
 @import 'pages/dashboard';

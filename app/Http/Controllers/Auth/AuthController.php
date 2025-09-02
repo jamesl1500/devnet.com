@@ -14,6 +14,7 @@ use Illuminate\Auth\Events\PasswordReset;
 use App\Models\User;
 use Pest\Plugins\Profile;
 use Illuminate\Auth\Events\Registered;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
@@ -77,6 +78,55 @@ class AuthController extends Controller
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);
+    }
+
+    // Github Login route
+    public function initiateGithubLogin()
+    {
+        return Socialite::driver('github')->redirect();
+    }
+
+    // Github Login Callback
+    public function handleGithubCallback()
+    {
+        $user = Socialite::driver('github')->user();
+
+        // See if user exists based on email
+        $findUser = User::where('email', $user->getEmail())->first();
+
+        if ($findUser) {
+            // User found, log them in
+            Auth::login($findUser);
+            return redirect()->route('dashboard.following');
+        }
+
+        // Create new user and send verification email
+        $authUser = User::firstOrCreate([
+            'email' => $user->getEmail()
+        ], [
+            'name' => $user->getName(),
+            'username' => $user->getNickname(),
+            'email' => $user->getEmail(),
+            'password' => Hash::make(Str::random(16)),
+            'provider_id' => $user->getId(),
+            'token' => $user->token,
+            'refresh_token' => $user->refreshToken,
+            'expires_in' => $user->expiresIn
+        ]);
+
+       // Attach profile
+        Profiles::create([
+            'user_id' => $authUser->id,
+        ]);
+
+        // Fire registered event
+        event(new Registered($authUser));
+
+        // Login user
+        Auth::login($authUser);
+
+        // Redirect to verification notice
+        return redirect()->route('verification.notice');
     }
 
     // Logout

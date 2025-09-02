@@ -1,0 +1,52 @@
+.form-group{
+    margin-bottom: $space-sm;
+
+    label{
+        display: block;
+        margin-bottom: $space-xs;
+        font-weight: $font-weight-semibold;
+    }
+
+    input, textarea, select {
+        font-family: $font-body;
+        font-size: $font-size-xs;
+        font-weight: $font-weight-normal;
+        padding: $space-sm $space-md;
+
+        border: $border-height-sm solid $border-color;
+        border-radius: $border-radius-lg;
+
+        background: white;
+
+        width: 100%;
+
+        &:focus {
+            outline: none;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    button, input[type="submit"] {
+        font-family: $font-body;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-normal;
+        padding: $space-sm $space-lg;
+
+        border: none;
+        border-radius: $border-radius-lg;
+
+        background: $accent-cyan;
+        color: white;
+
+        background: $color-text-dark;
+
+        width: 100%;
+
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: darken($color-text-dark, 10%);
+        }
+    }
+}

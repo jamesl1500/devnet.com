@@ -1,0 +1,95 @@
+/**
+ * Auth page styles
+ */
+.auth-page{
+
+    .auth-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        height: 100vh;
+
+        .image-left{
+            flex: 1;
+
+            // Background image
+            background-image: url(https://images.unsplash.com/photo-1755858461565-b83250b13d6b?q=80&w=1289&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+            background-size: cover;
+            background-position: center;
+
+            .image-cover{
+                background: rgba(0, 0, 0, 0.4);
+                height: 100%;
+
+                .quote-bottom{
+                    display: flex;
+                    flex-direction: column;
+                    height: 100vh;
+                    
+                    padding: $space-md;
+
+                    blockquote{
+                        padding: $space-md;
+                        margin-top: auto;
+
+                        p{
+                            color: white;
+                            font-size: 1rem;
+                            line-height: 1.5;
+                            text-wrap: balance;
+                        }
+                    }
+                }
+            }
+        }
+
+        .action-right{
+            flex: 1;
+            background: white;
+
+            .inner-action-right{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+
+                .action-container{
+
+                    .action-header{
+                        text-align: center;
+                        margin-bottom: $space-lg;
+
+                        h2{
+                            font-size: 1.5rem;
+                            font-weight: $font-weight-bold;
+                        }
+
+                        p{
+                            font-size: .875rem;
+                            font-weight: $font-weight-normal;
+                            color: #737373;
+                        }
+                    }
+                }
+
+                .action-form{
+                    width: 100%;
+
+                    .oauth-login{
+
+                        p{
+                            font-size: .875rem;
+                            font-weight: $font-weight-normal;
+                            color: #737373;
+                            text-align: center;
+
+                            margin-top: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

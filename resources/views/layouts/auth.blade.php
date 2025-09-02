@@ -12,6 +12,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="auth" content="{{ Auth::check() }}">
 
+    <script src="https://kit.fontawesome.com/8ea51260da.js" crossorigin="anonymous"></script>
+
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
 </head>
 <body>

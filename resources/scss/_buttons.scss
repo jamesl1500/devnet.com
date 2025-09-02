@@ -1,0 +1,44 @@
+.btn{
+    font-family: $font-body;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-normal;
+    padding: $space-sm $space-lg;
+
+    border: none;
+    border-radius: $border-radius-lg;
+
+    background: $accent-cyan;
+    color: white;
+
+    background: $color-text-dark;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+
+    i{
+        margin-right: 5px;
+    }
+
+    text-decoration: none;
+
+    &.btn-full{
+        width: 100%;
+    }
+    
+    &.btn-trans{
+        background: transparent;
+        color: $color-text-dark;
+
+        border: 1px solid #e5e5e5;
+
+        &:hover {
+            background: darken(#e5e5e5, 10%);
+        }
+    }
+
+    &:hover {
+        background: darken($color-text-dark, 10%);
+        text-decoration: none;
+    }
+}
