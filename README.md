@@ -1,30 +1,51 @@
-# Laravel + Livewire Starter Kit
+# DevNet
+## Version: v0.0.1 (In Development)
 
-## Introduction
+🚀 **DevNet** is a modern **social networking platform for developers** — built with Laravel.  
+It provides profiles, posts, threads, groups, and events so that devs can connect, collaborate, and grow together.
 
-Our Laravel + [Livewire](https://livewire.laravel.com) starter kit provides a robust, modern starting point for building Laravel applications with a Livewire frontend.
+---
 
-Livewire is a powerful way of building dynamic, reactive, frontend UIs using just PHP. It's a great fit for teams that primarily use Blade templates and are looking for a simpler alternative to JavaScript-driven SPA frameworks like React and Vue.
+## ✨ Features
+- 👤 User Profiles (with avatar, bio, and headline)
+- 📝 Posts (create, share, and comment on posts)
+- 💬 Threads (community discussions, Q&A style)
+- 👥 Groups (join and collaborate with like-minded devs)
+- 📅 Events (organize and attend dev events)
+- 🔒 Authentication (secure login & registration)
+- 🎨 Cyberpunk-inspired UI theme (black/white/gray core palette)
 
-This Livewire starter kit utilizes Livewire 3, Laravel Volt (optionally), TypeScript, Tailwind, and the [Flux UI](https://fluxui.dev) component library.
+---
 
-If you are looking for the alternate configurations of this starter kit, they can be found in the following branches:
+## 🛠️ Tech Stack
+**Frontend**
+- Blade Templates (Laravel’s templating engine)
+- TailwindCSS (utility-first styling)
+- Blade Components & Partials for modular views
 
-- [components](https://github.com/laravel/livewire-starter-kit/tree/components) - if Volt is not selected
-- [workos](https://github.com/laravel/livewire-starter-kit/tree/workos) - if WorkOS is selected for authentication
+**Backend**
+- Laravel 12 (PHP framework)
+- Eloquent ORM (database layer)
+- MySQL/PostgreSQL (configurable)
 
-## Official Documentation
+**Other**
+- Composer (dependency management)
+- npm / Vite (frontend assets)
+- Docker (optional containerized setup)
 
-Documentation for all Laravel starter kits can be found on the [Laravel website](https://laravel.com/docs/starter-kits).
+---
 
-## Contributing
+## 🤝 Contributing
+Contributions are welcome!
+- Fork the repo
+- Create your feature branch
+- Submit a Pull Request
 
-Thank you for considering contributing to our starter kit! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🏆 Credits
+- Project Owner: James Latten
+- Framework: Laravel
+- Styling: TailwindCSS
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## License
-
-The Laravel + Livewire starter kit is open-sourced software licensed under the MIT license.
+## 📜 License
+This project is licensed under the MIT License.
+You are free to use, modify, and distribute this software.
