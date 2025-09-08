@@ -3,29 +3,61 @@
 @section('title', 'Register')
 
 @section('content')
-    <h1>Register</h1>
-    <form action="{{ route('register.post') }}" method="POST">
-        @csrf
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" name="name" id="name" required>
+<div class="auth-page register">
+    <div class="auth-container">
+        <div class="image-left">
+            <div class="image-cover">
+                <div class="quote-bottom">
+                    <?php
+                        // Random generated quote
+                        [$message, $author] = str(Illuminate\Foundation\Inspiring::quotes()->random())->explode('-');
+                    ?>
+                    <blockquote>
+                        <p>"{{ $message }}" - {{ $author }}</p>
+                    </blockquote>
+                </div>
+            </div>
         </div>
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username" required>
+        <div class="action-right">
+            <div class="inner-action-right">
+                <div class="action-container">
+                    <div class="action-header">
+                        <h2>Register</h2>
+                        <p>Create your account! Please fill in the details below.</p>
+                    </div>
+                    <div class="action-form">
+                        <form action="{{ route('register.post') }}" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <input type="text" name="name" id="name" placeholder="Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="username" id="username" placeholder="Username" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" id="email" placeholder="Email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" id="password" placeholder="Password" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit">Register</button>
+                                <a class="btn btn-full btn-trans btn-push-up" href="{{ route('login') }}">Already have an account? Login</a>
+                            </div>
+                        </form>
+                        <div class="oauth-login">
+                            <p>Or register with:</p>
+                            <div class="oauth-buttons">
+                                <a class="btn btn-full btn-trans github-login" href="{{ route('login.github') }}"><i class="fa-brands fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" required>
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password" required>
-        </div>
-        <div>
-            <label for="password_confirmation">Confirm Password:</label>
-            <input type="password" name="password_confirmation" id="password_confirmation" required>
-        </div>
-        <button type="submit">Register</button>
-    </form>
+    </div>
+</div>
 @endsection

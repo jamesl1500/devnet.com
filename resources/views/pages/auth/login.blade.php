@@ -26,6 +26,9 @@
                             <p>Welcome back! Please enter your credentials.</p>
                         </div>
                         <div class="action-form">
+                            @if (session('status') || $errors->any())
+                                <x-form.alerts :type="session('status') ? 'success' : 'danger'" :message="session('status') ?: $errors->first()" :messages="$errors->all()" />
+                            @endif
                             <form action="{{ route('login.post') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
@@ -35,7 +38,8 @@
                                     <input type="password" name="password" id="password" placeholder="Password" required>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit">Login</button>
+                                    <button type="submit">Login</button><br />
+                                    <a class="btn btn-full btn-trans btn-push-up" href="{{ route('password.request') }}">Forgot Password?</a>
                                 </div>
                             </form>
                             <div class="oauth-login">

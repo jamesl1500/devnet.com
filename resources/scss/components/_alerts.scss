@@ -1,0 +1,40 @@
+.alert{
+    border-radius: $border-radius-lg;
+    padding: 12px;
+    margin-bottom: 8px;
+    text-align: center;
+
+    ul{
+        padding: 0;
+        margin: 0;
+
+        li{
+            margin-bottom: $space-xs;
+            margin-left: 10px;
+
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &.alert-danger{
+        background: darken($color-alert-danger, 5%);
+        border: 1px solid darken($color-alert-danger, 10%);
+        color: white;
+
+        &:hover {
+            background: darken($color-alert-danger, 10%);
+        }
+    }
+
+    &.alert-success{
+        background: darken($color-alert-success, 5%);
+        border: 1px solid darken($color-alert-success, 10%);
+        color: white;
+
+        &:hover {
+            background: darken($color-alert-success, 10%);
+        }
+    }
+}

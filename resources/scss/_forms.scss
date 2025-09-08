@@ -17,12 +17,14 @@
         border-radius: $border-radius-lg;
 
         background: white;
+        color: #000;
 
         width: 100%;
 
         &:focus {
             outline: none;
             box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+            color: #000;
         }
     }
 
@@ -47,6 +49,13 @@
 
         &:hover {
             background: darken($color-text-dark, 10%);
+        }
+    }
+
+    a{
+        &.btn-push-up{
+            display: inline-block;
+            margin-top: $space-md;
         }
     }
 }

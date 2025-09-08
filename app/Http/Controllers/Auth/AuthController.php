@@ -15,6 +15,7 @@ use App\Models\User;
 use Pest\Plugins\Profile;
 use Illuminate\Auth\Events\Registered;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -161,6 +162,10 @@ class AuthController extends Controller
     // Show Reset Password form
     public function showResetPasswordForm($token)
     {
+        // Ensure we have a token
+        if (!$token) {
+            return redirect()->route('password.request')->withErrors(['email' => 'Invalid or expired password reset token. Please request a new link.']);
+        }
         return view('pages.auth.reset-password', ['token' => $token]);
     }
 
@@ -169,7 +174,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'token' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|exists:users,email',
             'password' => 'required|min:8|confirmed',
         ]);
 

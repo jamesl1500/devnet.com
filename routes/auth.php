@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
+
 Route::middleware('guest')->group(function () {
     Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 
@@ -18,14 +19,13 @@ Route::middleware('guest')->group(function () {
 
     Route::post('register', [AuthController::class, 'register'])->name('register.post');
 
-    Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->name('password.email');
+    Route::post('forgot-password', [AuthController::class, 'sendResetLink'])->name('password.email');
 
     Route::post('reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
-
 });
 
 /**
- * Github login routes
+ * Github login/Register routes
  */
 Route::get('/auth/redirect', [AuthController::class, 'initiateGithubLogin'])->name('login.github');
 Route::get('/auth/callback', [AuthController::class, 'handleGithubCallback'])->name('login.github.callback');
