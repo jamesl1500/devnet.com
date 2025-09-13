@@ -21,7 +21,11 @@ class Onboarded
             return $next($request);
         }
 
-        // If the user is not authenticated or not onboarded, redirect to login
+        // Redirect to the onboarding page if not onboarded
+        if(Auth::user()->is_onboarding) {
+            return redirect()->route('onboarding.' . Auth::user()->onboarding_step);
+        }
+
         return redirect()->route('login');
     }
 }

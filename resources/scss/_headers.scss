@@ -1,0 +1,81 @@
+.auth-header{
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding-top: 20px;
+
+    &.fixed-header{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+    }
+}
+
+// Auth header
+.auth-header{
+
+    .header-inner-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 53px;
+
+        background: white;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        box-shadow: 0 2px 14px #09090d14;
+        border: 1px solid #e6e6e6;
+
+        border-radius: 50px;
+
+        .header-branding{
+
+            a{
+                text-decoration: none;
+
+                h1{
+                    margin: 0;
+                    font-weight: 300;
+                    color: #000;
+                    font-size: 2em;
+
+                }
+            }
+
+        }
+
+        .header-menu{
+
+            ul{
+                padding: 0px;
+                margin: 0px;
+
+                li{
+                    display: inline-block;
+                    margin-left: 2rem;
+
+                    a{
+                        font-weight: 300;
+                        color: #000;
+                        text-decoration: none;
+                    }
+
+                    &.active, &:hover{
+                        border-bottom: 2px solid #000;
+                        padding-bottom: 5px;
+                        margin-bottom: -5px;
+
+                        a{
+                            font-weight: 600;
+                            color: #000;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
