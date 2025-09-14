@@ -8,10 +8,9 @@
         <div class="image-left">
             <div class="image-cover">
                 <div class="quote-bottom">
-                    <?php
-                        // Random generated quote
-                        [$message, $author] = str(Illuminate\Foundation\Inspiring::quotes()->random())->explode('-');
-                    ?>
+                    @php
+                        [$message, $author] = explode('-', Illuminate\Foundation\Inspiring::quotes()->random(), 2);
+                    @endphp
                     <blockquote>
                         <p>"{{ $message }}" - {{ $author }}</p>
                     </blockquote>
