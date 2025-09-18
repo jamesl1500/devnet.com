@@ -35,19 +35,19 @@
                             </a>
                         </li>
                         <li class="header-nav-item dropdown">
-                            <a href="#" class="notifications-open">
+                            <a href="#" class="notifications-open nav-link-dropdown-toggle" data-d="notifications-dropdown">
                                 <i class="fa-regular fa-bell"></i>
                             </a>
                         </li>
                         <li class="header-nav-item dropdown">
-                            <a href="#" class="user-open">
+                            <a href="#" class="user-open nav-link-dropdown-toggle" data-d="header-nav-dropdown">
                                 <i class="fa-regular fa-user"></i>
                             </a>
                         </li>
                     </ul>
                 </nav>
                 <div class="dropdowns">
-                    <div class="header-nav-dropdown">
+                    <div class="header-nav-dropdown header-dropdown" id="header-nav-dropdown">
                         <ul class="header-nav-list">
                             <li class="header-nav-item">
                                 <a href="#" class="header-nav-link">
@@ -55,7 +55,7 @@
                                 </a>
                             </li>
                             <li class="header-nav-item">
-                                <a href="#" class="header-nav-link">
+                                <a href="{{ route('settings.index') }}" class="header-nav-link">
                                     Settings
                                 </a>
                             </li>
@@ -66,7 +66,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="notifications-dropdown">
+                    <div class="notifications-dropdown header-dropdown" id="notifications-dropdown">
                         <ul class="notifications-list">
                             <li class="notifications-item">
                                 <a href="#" class="notifications-link">

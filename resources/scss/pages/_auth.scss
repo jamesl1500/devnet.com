@@ -94,3 +94,151 @@
         }
     }
 }
+
+/** Onboarding page styles */
+.onboarding-page{
+    margin-top: 80px;
+
+    .onboarding-container{
+
+        .onboarding-m-header{
+            background: #f4f2ee;
+            box-shadow: none;
+            border: none;
+            padding: 50px 0px;
+
+            h2{
+                font-size: 1.5rem;
+                font-weight: $font-weight-bold;
+            }
+
+            p{
+                font-size: .875rem;
+                font-weight: $font-weight-normal;
+                color: #737373;
+            }
+        }
+
+        .onboarding-content{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 20px;
+
+            .onboarding-progress-left{
+                flex: 1;
+                background: white;
+                padding: $space-lg;
+                border: 1px solid #e6e6e6;
+                box-shadow: 0 2px 14px #09090d14;
+
+                .progress-bar{
+                    margin-bottom: $space-lg;
+
+                    .progress-step{
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: $space-md;
+
+                        .step-number{
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 50%;
+                            background: #e6e6e6;
+                            color: #737373;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            font-weight: $font-weight-bold;
+                            margin-right: $space-md;
+
+                            &.completed{
+                                background: $color-bg-primary;
+                                color: white;
+                            }
+                        }
+
+                        .step-label{
+                            font-size: 1rem;
+                            font-weight: $font-weight-normal;
+
+                            &.completed{
+                                font-weight: $font-weight-bold;
+                            }
+                        }
+
+                        &.completed, &.current{
+
+                            .step-number{
+                                background: $color-bg-primary;
+                                color: white;
+                            }
+
+                            .step-label{
+                                font-weight: $font-weight-bold;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .onboarding-info-right{
+                flex: 3;
+                background: white;
+                padding: $space-lg;
+                border: 1px solid #e6e6e6;
+                box-shadow: 0 2px 14px #09090d14;
+
+                h3{
+                    font-size: 1.25rem;
+                    font-weight: $font-weight-bold;
+                    margin-bottom: $space-md;
+                }
+
+                p{
+                    font-size: .875rem;
+                    font-weight: $font-weight-normal;
+                    color: #737373;
+                    margin-bottom: $space-lg;
+                }
+
+                .info-box{
+
+                    .form-group{
+                        margin-bottom: $space-md;
+
+                        label{
+                            display: block;
+                            margin-bottom: $space-xs;
+                            font-weight: $font-weight-medium;
+                        }
+
+                        img{
+                            max-width: 150px;
+                            border-radius: $border-radius-sm;
+                            margin-bottom: $space-sm;
+                        }
+
+                        input, select, textarea{
+                            width: 100%;
+                            padding: $space-sm;
+                            border: 1px solid #ccc;
+                            border-radius: $border-radius-sm;
+                            font-size: 1rem;
+
+                            &:focus{
+                                border-color: $color-bg-primary;
+                                outline: none;
+                                box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+                            }
+                        }
+
+                        &:last-child{
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

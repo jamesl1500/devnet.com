@@ -13,6 +13,65 @@
     }
 }
 
+// Onboarding header
+.onboarding-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: white;
+    padding: 20px;
+
+    box-shadow: 0 2px 14px #09090d14;
+    border: 1px solid #e6e6e6;
+
+    .header-inner-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        background: white;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        .header-branding{
+
+            a{
+                text-decoration: none;
+
+                h1{
+                    margin: 0;
+                    font-weight: 300;
+                    color: #000;
+                    font-size: 2em;
+
+                }
+            }
+
+        }
+
+        .header-menu{
+
+            ul{
+                padding: 0px;
+                margin: 0px;
+
+                li{
+                    display: inline-block;
+                    margin-left: 2rem;
+
+                    a{
+                        font-weight: 300;
+                        color: #000;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
 // Auth header
 .auth-header{
 

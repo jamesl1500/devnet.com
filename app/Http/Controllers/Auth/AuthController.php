@@ -213,7 +213,7 @@ class AuthController extends Controller
     {
         $request->user()->sendEmailVerificationNotification();
 
-        return back()->with('status', 'verification-link-sent');
+        return back()->with('status', 'A new verification link has been sent to your email address.');
     }
 
     /**
@@ -280,21 +280,21 @@ class AuthController extends Controller
             $user = Auth::user();
 
             $request->validate([
-                'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'avatar_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
                 'cover_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
                 'headline' => 'required|string|max:255',
                 'bio' => 'required|string|max:500',
             ]);
 
             // Handle file upload for avatar
-            if($request->hasFile('avatar')) {
+            if($request->hasFile('avatar_photo')) {
                 // Create file modal for the new file
                 $avatar = Files::create([
                     'user_id' => $user->id,
-                    'file_name' => $request->file('avatar')->getClientOriginalName(),
-                    'file_path' => $request->file('avatar')->store('avatars', 'public'),
-                    'file_type' => $request->file('avatar')->getClientMimeType(),
-                    'file_size' => $request->file('avatar')->getSize()
+                    'file_name' => $request->file('avatar_photo')->getClientOriginalName(),
+                    'file_path' => $request->file('avatar_photo')->store('avatars', 'public'),
+                    'file_type' => $request->file('avatar_photo')->getClientMimeType(),
+                    'file_size' => $request->file('avatar_photo')->getSize()
                 ]);
 
                 $user->avatar_id = $avatar->id;
@@ -320,6 +320,7 @@ class AuthController extends Controller
             // Update headline
             $user->headline = $request->input('headline');
 
+            // Move to next step
             $user->onboarding_step = 'complete';
 
             if($user->save()) {
@@ -361,7 +362,7 @@ class AuthController extends Controller
             $user->is_onboarding = false;
 
             if($user->save()) {
-                return redirect()->route('dashboard.feed');
+                return redirect()->route('dashboard.following');
             }
         }
 

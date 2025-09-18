@@ -1,0 +1,66 @@
+.settings-page{
+    padding-top: 150px;
+
+    .settings-container{
+
+        .settings-header{
+            margin-bottom: $space-md;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+            padding: $space-md 0;
+
+            h1{
+                font-size: 2rem;
+                margin-bottom: $space-sm;
+            }
+
+            p{
+                color: $color-text-dark;
+            }
+        }
+
+        .settings-content{
+            display: flex;
+            gap: $space-lg;
+            margin-top: $space-lg;
+
+            .settings-main-content{
+                flex: 1;
+                background: white;
+                border: 1px solid $border-color;
+                border-radius: $border-radius;
+                padding: $space-lg;
+                box-shadow: $box-shadow-sm;
+            }
+
+            .settings-sidebar-links{
+                width: 250px;
+
+                .settings-menu{
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+
+                    .settings-menu-item{
+
+                        a{
+                            display: block;
+                            padding: $space-sm $space-md;
+                            color: $color-text-dark;
+                            border-left: 3px solid transparent;
+                            text-decoration: none;
+                        }
+
+                        &.active{
+
+                            a{
+                                font-weight: 600;
+                                border-left: 3px solid $border-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

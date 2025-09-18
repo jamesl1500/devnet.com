@@ -11,13 +11,15 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="auth" content="{{ Auth::check() }}">
+
     <meta name="onboarding" content="{{ Auth::check() && Auth::user()->is_onboarding }}">
+    <meta name="onboarding-step" content="{{ Auth::check() ? Auth::user()->onboarding_step : '' }}">
 
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
 </head>
 <body>
 <div class="header-container">
-    @include('templates.auth.header')
+    @include('templates.onboarding.header')
 </div>
 <div class="website-container">
     @yield('content')
