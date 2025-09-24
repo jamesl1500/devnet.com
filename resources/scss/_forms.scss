@@ -1,6 +1,25 @@
 .form-group{
     margin-bottom: $space-sm;
 
+    img{
+
+        &.current-avatar, 
+        &.current-cover{
+            display: block;
+            max-width: 150px;
+            height: auto;
+            border-radius: $border-radius;
+            margin-bottom: $space-sm;
+        }
+
+        &.current-cover{
+            max-width: 100%;
+            height: auto;
+            border-radius: $border-radius;
+            margin-bottom: $space-sm;
+        }
+    }
+
     label{
         display: block;
         margin-bottom: $space-xs;
@@ -32,7 +51,7 @@
         font-family: $font-body;
         font-size: $font-size-sm;
         font-weight: $font-weight-normal;
-        padding: $space-sm $space-lg;
+        padding: $space-sm 20px;
 
         border: none;
         border-radius: $border-radius-lg;
@@ -42,10 +61,12 @@
 
         background: $color-text-dark;
 
-        width: 100%;
-
         cursor: pointer;
         transition: all 0.3s ease;
+
+        &.full-width{
+            width: 100%;
+        }
 
         &:hover {
             background: darken($color-text-dark, 10%);
@@ -57,5 +78,9 @@
             display: inline-block;
             margin-top: $space-md;
         }
+    }
+
+    &:last-child{
+        margin-bottom: 0;
     }
 }

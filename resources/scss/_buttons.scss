@@ -37,6 +37,11 @@
         }
     }
 
+    &.btn-danger{
+        background: $color-alert-danger;
+        color: white;
+    }
+
     &:hover {
         background: darken($color-text-dark, 10%);
         text-decoration: none;

@@ -3,15 +3,19 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+
 use App\Models\Files;
 use App\Models\Profiles;
+use App\Models\Notifications_settings;
+use App\Models\User;
+use App\Models\Privacy_settings;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Auth\Events\PasswordReset;
-use App\Models\User;
 use Pest\Plugins\Profile;
 use Illuminate\Auth\Events\Registered;
 use Laravel\Socialite\Facades\Socialite;
@@ -51,6 +55,27 @@ class AuthController extends Controller
         // Attach profile
         Profiles::create([
             'user_id' => $user->id,
+        ]);
+
+        // Create default notification settings
+        Notifications_settings::create([
+            'user_id' => $user->id,
+            'email_notifications' => true,
+            'sms_notifications' => false,
+            'push_notifications' => false,
+        ]);
+
+        // Create default privacy settings
+        Privacy_settings::create([
+            'user_id' => $user->id,
+            'show_email' => false,
+            'show_phone' => false,
+            'show_profile_picture' => true,
+            'show_online_status' => true,
+            'show_posts_to_public' => true,
+            'show_followings_list' => true,
+            'show_followers_list' => true,
+            'show_profile_information' => true,
         ]);
 
         // Fire registered event
