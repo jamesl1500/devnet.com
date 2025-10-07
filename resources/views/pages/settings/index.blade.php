@@ -5,11 +5,8 @@
 
 @section('content')
     <div class="settings-page">
+        @include('pages.settings.includes.head')
         <div class="settings-container container">
-            <div class="settings-header">
-                <h2>Account Settings</h2>
-                <p>Manage your account settings and set e-mail preferences.</p>
-            </div>
             <div class="settings-content">
                 @include('pages.settings.includes.sidebar')
 

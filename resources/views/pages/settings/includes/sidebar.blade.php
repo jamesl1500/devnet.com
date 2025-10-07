@@ -10,7 +10,7 @@
                 Profile
             </a>
         </li>
-        <li class="settings-menu-item {{ request()->is('settings/security') ? 'active' : '' }}">
+        <li class="settings-menu-item {{ request()->is('settings/notifications') ? 'active' : '' }}">
             <a href="{{ route('settings.notifications') }}" class="settings-menu-link">
                 Notifications
             </a>

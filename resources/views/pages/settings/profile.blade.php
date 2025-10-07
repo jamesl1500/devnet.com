@@ -5,11 +5,8 @@
 
 @section('content')
     <div class="settings-page">
+        @include('pages.settings.includes.head')
         <div class="settings-container container">
-            <div class="settings-header">
-                <h2>{{ $pageBreadcrumb }}</h2>
-                <p>{{ $pageSubtitle }}</p>
-            </div>
             <div class="settings-content">
                 @include('pages.settings.includes.sidebar')
 

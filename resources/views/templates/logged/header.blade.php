@@ -84,19 +84,3 @@
             </div>
         </div>
 </header>
-<?php if($pageTitle){ ?>
-    <div class="subheader">
-        <div class="inner-subheader container">
-            <div class="subheader-title">
-                <h1><?php echo e($pageTitle); ?> <?php if($pageBreadcrumb){ ?> / <span class="crumb"><?php echo e($pageBreadcrumb); ?></span> <?php } ?></h1>
-            </div>
-            <?php
-                if($pageSubtitle){
-            ?>
-                <div class="subheader-subtitle">
-                    <h2><?php echo e($pageSubtitle); ?></h2>
-                </div>
-            <?php } ?>
-        </div>
-    </div>
-<?php } ?>

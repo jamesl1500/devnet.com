@@ -18,7 +18,8 @@ Route::get('dashboard/for-you', [DashboardController::class, 'for_you'])->middle
 
 Route::middleware(['auth'])->group(function () {
     // Post routes
-    Route::resource('posts', PostsController::class);
+    Route::post('posts/create', [PostsController::class, 'store'])->name('posts.store');
+    Route::get('posts/view/{post_id}/{post_slug}', [PostsController::class, 'show'])->name('posts.show');
 
     // Settings routes 
     Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
@@ -30,7 +31,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('settings/profile/update_avatar_cover', [SettingsController::class, 'update_avatar_cover'])->name('settings.profile.update_avatar_cover');
 
     Route::get('settings/notifications', [SettingsController::class, 'notifications'])->name('settings.notifications');
+    Route::post('settings/notifications/update', [SettingsController::class, 'update_notifications'])->name('settings.notifications.update');
+    
     Route::get('settings/privacy', [SettingsController::class, 'privacy'])->name('settings.privacy');
+    Route::post('settings/privacy/update', [SettingsController::class, 'update_privacy'])->name('settings.privacy.update');
+    
     Route::get('settings/security', [SettingsController::class, 'security'])->name('settings.security');
 });
 

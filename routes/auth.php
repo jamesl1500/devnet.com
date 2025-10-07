@@ -63,6 +63,3 @@ Route::middleware('auth')->group(function () {
     Route::get('onboarding/complete', [AuthController::class, 'showOnboardingComplete'])->middleware(['onboarding'])->name('onboarding.complete');
     Route::post('onboarding/complete', [AuthController::class, 'postOnboardingComplete'])->middleware(['onboarding'])->name('onboarding.complete.post');
 });
-
-Route::post('logout', App\Livewire\Actions\Logout::class)
-    ->name('logout');

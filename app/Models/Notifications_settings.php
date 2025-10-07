@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Libraries\NotificationsSettings;
 
 class Notifications_settings extends Model
 {
@@ -13,6 +14,10 @@ class Notifications_settings extends Model
     // Table
     protected $table = 'notifications_settings';
 
+    // Library
+    public static $notificationsSettingsLib = NotificationsSettings::class;
+
+    // Fillable
     protected $fillable = [
         'user_id',
         'email_notifications',

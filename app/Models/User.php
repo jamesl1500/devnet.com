@@ -8,11 +8,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Fortify\TwoFactorAuthenticatable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, SoftDeletes;
+    use HasFactory, Notifiable, SoftDeletes, TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -61,6 +62,41 @@ class User extends Authenticatable implements MustVerifyEmail
     public function profile()
     {
         return $this->hasOne(Profiles::class);
+    }
+
+    // Follows
+    public function followers()
+    {
+        return $this->morphMany(Follows::class, 'followable');
+    }
+
+    public function following()
+    {
+        return $this->hasMany(Follows::class, 'follower_id');
+    }
+
+    /**
+     * Notification Settings
+     */
+    public function notificationSettings()
+    {
+        return $this->hasOne(Notifications_settings::class, 'user_id');
+    }
+
+    /**
+     * Security Settings
+     */
+    public function securitySettings()
+    {
+        return $this->hasOne(Security_settings::class, 'user_id');
+    }
+
+    /**
+     * Privacy Settings
+     */
+    public function privacySettings()
+    {
+        return $this->hasOne(Privacy_settings::class, 'user_id');
     }
 
     /**

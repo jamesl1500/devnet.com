@@ -22,6 +22,9 @@ return new class extends Migration
             $table->boolean('show_followings_list')->default(true);
             $table->boolean('show_followers_list')->default(true);
             $table->boolean('show_profile_information')->default(true);
+            $table->enum('allow_messages_from', ['everyone', 'friends', 'no_one'])->default('friends');
+            $table->boolean('allow_tagging')->default(false);
+            $table->boolean('search_visibility')->default(true);
             $table->softDeletes();
             $table->timestamps();
         });

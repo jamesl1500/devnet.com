@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
+use App\Models\Notifications_settings;
+use App\Models\Privacy_settings;
 use App\Models\Files;
 
 class SettingsController extends Controller
@@ -171,8 +173,53 @@ class SettingsController extends Controller
      */
     public function notifications()
     {
+        // Get user notification settings
+        $user = User::with('notificationSettings')->find(auth()->user()->id);
+        $notification_settings = $user->notificationSettings;
+
+        // Get appropriate settings from library
+        $notifications_settings_type = Notifications_settings::$notificationsSettingsLib::$settings_type;
+
         // Render view
-        return view('pages.settings.notifications');
+        return view('pages.settings.notifications', compact('notification_settings', 'notifications_settings_type'));
+    }
+
+    /**
+     * Update Notifications (POST)
+     * ----
+     * Handle notification settings form submission
+     */
+    public function update_notifications(Request $request)
+    {
+        // Validate request
+        $request->validate([
+            'type' => 'required|string',
+            'value' => 'required|boolean',
+        ]);
+
+        // Get user notification settings
+        $user = User::with('notificationSettings')->find(auth()->user()->id);
+        $notification_settings = $user->notificationSettings;
+
+        // Make sure type is valid
+        if(in_array($request->type, array_keys(Notifications_settings::$notificationsSettingsLib::$settings_type)) === false){
+            return back()->withErrors(['type' => 'Invalid notification type.'])->withInput();
+        }
+
+        // If user has no notification settings, create new record
+        if(!$notification_settings){
+            $notification_settings = new Notifications_settings();
+            $notification_settings->user_id = $user->id;
+        }
+
+        // Update the appropriate setting
+        $notification_settings->{$request->type} = $request->value;
+
+        // Save notification settings
+        $notification_settings->save();
+
+        // Redirect back with success message
+        return back()->with('success', 'Notification settings updated successfully.');
     }
 
     /**
@@ -182,8 +229,15 @@ class SettingsController extends Controller
      */
     public function privacy()
     {
+        // Get user privacy settings
+        $user = User::with('privacySettings')->find(auth()->user()->id);
+        $privacy_settings = $user->privacySettings;
+
+        // Get appropriate settings from library
+        $privacy_settings_type = Privacy_settings::$privacySettingsLib::$settings_type;
+
         // Render view
-        return view('pages.settings.privacy');
+        return view('pages.settings.privacy', compact('privacy_settings', 'privacy_settings_type'));
     }
 
     /**

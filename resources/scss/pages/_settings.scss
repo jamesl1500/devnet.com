@@ -1,5 +1,63 @@
 .settings-page{
-    padding-top: 150px;
+    padding-top: 70px;
+
+    .settings-header{
+        height: 300px;
+        margin-bottom: 40px;
+
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        .settings-header-inner{
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            padding: $space-lg 0;
+
+            .container{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                height: 100%;
+
+                h2{
+                    font-size: 2rem;
+                    margin-bottom: $space-sm;
+                    color: white;
+                }
+
+                p{
+                    color: $color-text-dark;
+                    font-size: 1rem;
+                    color: white;
+                }
+
+                nav.breadcrumbs{
+
+                    ol.breadcrumb{
+
+                        li.breadcrumb-item{
+
+                            a{
+                                color: white;
+                                text-decoration: none;
+
+                                &:hover{
+                                    text-decoration: underline;
+                                }
+                            }
+
+                            &.active{
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     .settings-container{
 

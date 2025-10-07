@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use App\Models\User;
+
+use App\Libraries\PrivacySettings;
+
 class Privacy_settings extends Model
 {
     // Soft Deletes
@@ -12,6 +16,9 @@ class Privacy_settings extends Model
 
     // Table
     protected $table = 'privacy_settings';
+
+    // Library
+    public static $privacySettingsLib = PrivacySettings::class;
 
     protected $fillable = [
         'user_id',
@@ -23,6 +30,9 @@ class Privacy_settings extends Model
         'show_followings_list',
         'show_followers_list',
         'show_profile_information',
+        'allow_messages_from',
+        'allow_tagging',
+        'search_visibility',
         'created_at',
         'updated_at',
     ];

@@ -24,6 +24,7 @@ class Posts extends Model
         'cover_id',
         'group_id',
         'user_id',
+        'original_post_id',
         'created_at',
         'updated_at',
     ];
@@ -59,4 +60,12 @@ class Posts extends Model
     {
         return $this->morphMany(Comments::class, 'commentable');
     }
+
+    /**
+     * Get post media
+     */
+    public function media()
+    {
+        return $this->hasMany(Posts_media::class, 'post_id')->orderBy('order', 'asc');
+    }   
 }

@@ -5,6 +5,7 @@ namespace App\View\Components\Dashboard;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use App\Models\User;
 
 class PostCreation extends Component
 {
@@ -21,6 +22,8 @@ class PostCreation extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.dashboard.post-creation');
+        // Get users profile info
+        $user = User::find(auth()->user()->id);
+        return view('components.dashboard.post-creation', ['user' => $user]);
     }
 }

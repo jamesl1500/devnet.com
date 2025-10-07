@@ -17,6 +17,7 @@ return new class extends Migration
             $table->boolean('email_notifications')->default(true);
             $table->boolean('sms_notifications')->default(false);
             $table->boolean('push_notifications')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

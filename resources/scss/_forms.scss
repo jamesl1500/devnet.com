@@ -26,7 +26,7 @@
         font-weight: $font-weight-semibold;
     }
 
-    input, textarea, select {
+    input[type='text'], input[type='email'], input[type='password'], textarea, select {
         font-family: $font-body;
         font-size: $font-size-xs;
         font-weight: $font-weight-normal;

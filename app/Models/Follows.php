@@ -15,6 +15,8 @@ class Follows extends Model
 
     protected $fillable = [
         'follower_id',
+        'followable_id',
+        'followable_type',
     ];
 
     /**

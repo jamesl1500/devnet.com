@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Posts;
+
 class DashboardController extends Controller
 {
     /**
@@ -20,7 +22,10 @@ class DashboardController extends Controller
      */
     public function following()
     {
-        return view('pages.dashboard.following');
+        // Get feed
+        $user = auth()->user();
+        $posts = $this->getFollowingFeed($user);
+        return view('pages.dashboard.following', compact('posts'));
     }
 
     /**
@@ -32,50 +37,22 @@ class DashboardController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Create "following" feed based on who the user follows and their posts
      */
-    public function create()
+    private function getFollowingFeed($user)
     {
-        //
-    }
+        // Get IDs of users the current user follows
+        $followedUserIds = $user->following()->pluck('followable_id')->toArray();
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        // Include the user's own ID to see their posts as well
+        $followedUserIds[] = $user->id;
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        // Fetch posts from followed users
+        $posts = Posts::whereIn('user_id', $followedUserIds)
+            ->with(['user', 'media', 'comments'])
+            ->latest()
+            ->paginate(20);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return $posts;
     }
 }
