@@ -37,7 +37,7 @@
                                     <input type="password" name="password" id="password" placeholder="Password" required>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit">Login</button><br />
+                                    <button type="submit" class="full-width">Login</button><br />
                                     <a class="btn btn-full btn-trans btn-push-up" href="{{ route('password.request') }}">Forgot Password?</a>
                                 </div>
                             </form>

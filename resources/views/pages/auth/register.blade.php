@@ -27,23 +27,19 @@
                     <div class="action-form">
                         <form action="{{ route('register.post') }}" method="POST">
                             @csrf
-                            <div class="form-group">
+                            <div class="form-group double-sided">
                                 <input type="text" name="name" id="name" placeholder="Name" required>
-                            </div>
-                            <div class="form-group">
                                 <input type="text" name="username" id="username" placeholder="Username" required>
                             </div>
                             <div class="form-group">
                                 <input type="email" name="email" id="email" placeholder="Email" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group double-sided">
                                 <input type="password" name="password" id="password" placeholder="Password" required>
-                            </div>
-                            <div class="form-group">
                                 <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" required>
                             </div>
                             <div class="form-group">
-                                <button type="submit">Register</button>
+                                <button type="submit" class="full-width">Register</button>
                                 <a class="btn btn-full btn-trans btn-push-up" href="{{ route('login') }}">Already have an account? Login</a>
                             </div>
                         </form>

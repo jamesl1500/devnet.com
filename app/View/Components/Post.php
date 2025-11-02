@@ -9,12 +9,12 @@ use Illuminate\View\Component;
 class Post extends Component
 {
     // Post
-    public array $post;
+    public $post;
 
     /**
      * Create a new component instance.
      */
-    public function __construct(array $post)
+    public function __construct($post)
     {
         // Assign post to a public property
         $this->post = $post;

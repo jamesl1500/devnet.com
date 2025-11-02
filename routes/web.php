@@ -20,6 +20,11 @@ Route::middleware(['auth'])->group(function () {
     // Post routes
     Route::post('posts/create', [PostsController::class, 'store'])->name('posts.store');
     Route::get('posts/view/{post_id}/{post_slug}', [PostsController::class, 'show'])->name('posts.show');
+    
+    // API route for post creation modal
+    Route::get('api/post-creation-modal', function () {
+        return view('components.dashboard.post-creation', ['modal' => true]);
+    })->name('api.post-creation-modal');
 
     // Settings routes 
     Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');

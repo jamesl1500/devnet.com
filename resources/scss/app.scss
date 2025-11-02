@@ -257,6 +257,9 @@ a:hover {
     
 }
 
+/**
+* Components
+*/
 // Post Creation
 @import 'components/post-creation';
 
@@ -266,6 +269,12 @@ a:hover {
 // Alerts
 @import 'components/alerts';
 
+// Posts
+@import 'components/posts';
+
+/**
+* Pages
+*/
 // Auth pages (Login, register, Verify Email, Forgot password)
 @import 'pages/auth';
 

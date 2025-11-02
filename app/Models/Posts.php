@@ -62,10 +62,18 @@ class Posts extends Model
     }
 
     /**
+     * Get reactions for the post.
+     */
+    public function reactions()
+    {
+        return $this->morphMany(Reactions::class, 'reactable');
+    }
+
+    /**
      * Get post media
      */
     public function media()
     {
         return $this->hasMany(Posts_media::class, 'post_id')->orderBy('order', 'asc');
-    }   
+    }
 }

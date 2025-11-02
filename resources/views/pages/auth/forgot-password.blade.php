@@ -34,7 +34,7 @@
                                 <input type="email" name="email" id="email" placeholder="Email" autofocus required>
                             </div>
                             <div class="form-group">
-                                <button type="submit">Send Password Reset Link</button>
+                                <button type="submit" class="full-width">Send Password Reset Link</button>
                                 <a class="btn btn-full btn-trans btn-push-up" href="{{ route('login') }}">Login</a>
                             </div>
                         </form>

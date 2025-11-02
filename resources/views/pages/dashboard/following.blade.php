@@ -23,7 +23,7 @@
                         <div class="feed-content">
                             @if($posts->count() > 0)
                                 @foreach($posts as $post)
-                                    <x-post post="{{ $post }}" />
+                                    <x-post :post="$post" />
                                 @endforeach
                                 <div class="pagination-links">
                                     {{ $posts->links() }}
