@@ -12,8 +12,24 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Str;
 
+use App\Libraries\PostLikes;
+
 class PostsController extends Controller
 {
+    /**
+     * PostLikes Library
+     * @var PostLikes
+     */
+    protected $postLikes;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->postLikes = new PostLikes();
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -169,5 +185,26 @@ class PostsController extends Controller
         
         return redirect()->route('posts.index')
             ->with('success', 'Post deleted successfully!');
+    }
+
+    /**
+     * like
+     *
+     * Likes a post.
+     */
+    public function like(int $post_id)
+    {
+        $userId = Auth::id();
+        $success = $this->postLikes->add($post_id, $userId);
+
+        if ($success) {
+            // Get post likes now
+            $likesCount = $this->postLikes->countLikes($post_id);
+
+            // Return JSON response with new like count
+            return response()->json(['success' => true, 'message' => 'Post liked successfully.', 'likesCount' => $likesCount]);
+        } else {
+            return response()->json(['success' => false, 'message' => 'You have already liked this post.'], 400);
+        }
     }
 }

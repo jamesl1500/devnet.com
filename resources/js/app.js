@@ -7,6 +7,13 @@
 import './echo';
 
 /**
+ * Post Actions JS
+ * ----
+ * Handles post actions such as like, share, and comment.
+ */
+import './includes/post-actions';
+
+/**
  * Header JS
  * ----
  */

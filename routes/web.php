@@ -21,6 +21,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('posts/create', [PostsController::class, 'store'])->name('posts.store');
     Route::get('posts/view/{post_id}/{post_slug}', [PostsController::class, 'show'])->name('posts.show');
     
+    Route::post('posts/{post_id}/like', [PostsController::class, 'like'])->name('posts.like');
+    Route::post('posts/{post_id}/unlike', [PostsController::class, 'unlike'])->name('posts.unlike');
+
     // API route for post creation modal
     Route::get('api/post-creation-modal', function () {
         return view('components.dashboard.post-creation', ['modal' => true]);
