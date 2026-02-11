@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
+use App\Libraries\PostsLibrary;
 use App\Models\Posts;
 
 class DashboardController extends Controller
@@ -14,7 +12,9 @@ class DashboardController extends Controller
      */
     public function for_you()
     {
-        return view('pages.dashboard.for-you');
+        $posts = $this->getForYouFeed();
+
+        return view('pages.dashboard.for-you', compact('posts'));
     }
 
     /**
@@ -25,6 +25,7 @@ class DashboardController extends Controller
         // Get feed
         $user = auth()->user();
         $posts = $this->getFollowingFeed($user);
+
         return view('pages.dashboard.following', compact('posts'));
     }
 
@@ -33,7 +34,9 @@ class DashboardController extends Controller
      */
     public function popular()
     {
-        return view('pages.dashboard.popular');
+        $posts = $this->getPopularFeed();
+
+        return view('pages.dashboard.popular', compact('posts'));
     }
 
     /**
@@ -54,5 +57,27 @@ class DashboardController extends Controller
             ->paginate(20);
 
         return $posts;
+    }
+
+    /**
+     * Create a personalized feed based on trending posts.
+     */
+    private function getForYouFeed()
+    {
+        $posts = PostsLibrary::getPublicFeed(20, 'trending');
+
+        if ($posts->count() === 0) {
+            return PostsLibrary::getPublicFeed(20, 'latest');
+        }
+
+        return $posts;
+    }
+
+    /**
+     * Create a popular feed based on reactions and comments.
+     */
+    private function getPopularFeed()
+    {
+        return PostsLibrary::getPublicFeed(20, 'popular');
     }
 }

@@ -52,14 +52,6 @@
                 <i class="fa-solid fa-paperclip"></i>
                 <span>File</span>
             </div>
-            <div class="post-action">
-                <i class="fa-solid fa-chart-bar"></i>
-                <span>Poll</span>
-            </div>
-            <div class="post-action">
-                <i class="fa-solid fa-robot"></i>
-                <span>AI Help</span>
-            </div>
         </div>
     </div>
     
@@ -93,9 +85,9 @@
                         </div>
                         <div class="privacy-dropdown">
                             <select name="post_privacy" id="post_privacy" class="form-control" aria-label="Post privacy setting">
-                                <option value="public">🌍 Public</option>
-                                <option value="followers">👥 Followers</option>
-                                <option value="private">🔒 Private</option>
+                                <option value="public">Public</option>
+                                <option value="followers">Followers</option>
+                                <option value="private">Private</option>
                             </select>
                         </div>
                     </div>
@@ -111,16 +103,7 @@
             </div>
 
             <div class="form-interactive">
-                <div class="form-left-ai">
-                    <ul>
-                        <li>
-                            <button type="button" title="Get AI suggestions" id="post-ai-generate-button" aria-label="Generate content with AI">
-                                <i class="fa-solid fa-robot"></i>
-                            </button>
-                        </li>
-                    </ul>
-                    <span class="form-ai-status" id="ai-status"></span>
-                </div>
+                
                 <div class="form-right-attachments">
                     <ul>
                         <li>
@@ -134,16 +117,6 @@
                                 <i class="fa-solid fa-paperclip"></i>
                                 <input type="file" id="post-attach-file" name="post-attachments[]" class="hidden" multiple aria-label="Select files to upload">
                             </label>
-                        </li>
-                        <li>
-                            <button type="button" title="Add poll" id="post-add-poll" aria-label="Create a poll">
-                                <i class="fa-solid fa-chart-bar"></i>
-                            </button>
-                        </li>
-                        <li>
-                            <button type="button" title="Add location" id="post-add-location" aria-label="Add location">
-                                <i class="fa-solid fa-map-marker-alt"></i>
-                            </button>
                         </li>
                     </ul>
                 </div>
@@ -160,14 +133,8 @@
                     <span id="character-counter">0/5000</span>
                 </div>
                 <div class="form-submit-area">
-                    <button type="button" class="save-draft" id="save-draft" title="Save as draft">
-                        Save Draft
-                    </button>
-                    <button type="submit" class="post-submit" id="post-submit-btn">
+                    <button type="submit" class="btn post-submit" id="post-submit-btn">
                         <span class="submit-text">Post</span>
-                    </button>
-                    <button type="button" class="form-collapse" id="form-collapse-btn" title="Collapse form">
-                        <i class="fa-solid fa-chevron-up"></i>
                     </button>
                 </div>
             </div>
